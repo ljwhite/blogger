@@ -29,9 +29,10 @@ describe "user sees one article" do
       fill_in "comment[author_name]", with: "ME!"
       fill_in "comment[body]", with: "So many thoughts on this article."
       click_on "Submit"
-
+save_and_open_page
       expect(current_path).to eq(article_path(article))
       expect(page).to have_content("Post a Comment")
+      expect(page).to have_content("Comments (1)")
       expect(page).to have_content("ME!")
       expect(page).to have_content("So many thoughts on this article.")
     end
